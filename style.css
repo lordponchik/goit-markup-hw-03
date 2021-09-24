@@ -7,6 +7,11 @@
   --white-color: #ffffff;
   --white-transparent-color: rgba(255, 255, 255, 0.6);
   --black-color: #000000;
+  --primary-border-color: #ececec;
+  --secondary-border-color: #eeeeee;
+
+  --padding-section: 94px;
+  --margin-content: 30px;
 }
 
 body {
@@ -17,7 +22,36 @@ body {
   line-height: 1.7;
   letter-spacing: 0.03em;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
 .link {
   text-decoration: none;
 }
@@ -25,10 +59,23 @@ body {
 .list {
   list-style: none;
 }
-
+.section {
+  padding-top: var(--padding-section);
+  padding-bottom: var(--padding-section);
+}
 /* header */
-
+.header-pages {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--primary-border-color);
+}
+.menu-nav {
+  display: flex;
+  align-items: center;
+}
 .logo {
+  margin-right: 93px;
+
   font-family: Raleway;
   font-weight: 700;
   font-size: 26px;
@@ -43,7 +90,20 @@ body {
   color: var(--black-color);
   font-family: 'Roboto', sans-serif;
 }
+
+.site-nav {
+  display: flex;
+}
+
+.site-nav > .item:not(:last-child) {
+  margin-right: 50px;
+}
+
 .site-nav-link {
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
@@ -52,7 +112,14 @@ body {
 .site-nav-link.active {
   color: var(--accent-color);
 }
-.contacts-nav-link {
+.header-contacts-nav {
+  display: flex;
+  margin-left: auto;
+}
+.header-contacts-nav > .item:not(:last-child) {
+  margin-right: 50px;
+}
+.header-contacts-nav-link {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -61,8 +128,8 @@ body {
 }
 .site-nav-link:hover,
 .site-nav-link:focus,
-.contacts-nav-link:hover,
-.contacts-nav-link:focus {
+.header-contacts-nav-link:hover,
+.header-contacts-nav-link:focus {
   color: var(--accent-color);
 }
 
@@ -71,17 +138,23 @@ body {
 .hero {
   /* Чтобы видеть белый цвет текста */
   background-color: var(--primary-bg-color);
+  text-align: center;
 }
 .hero-title {
+  margin-bottom: var(--margin-content);
+
   font-weight: 900;
   font-size: 44px;
   line-height: 1.36;
-  text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--white-color);
 }
 .hero .button {
+  padding: 10px 32px;
+  border: 0;
+  border-radius: 4px;
+
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
@@ -95,14 +168,27 @@ body {
   color: var(--secondary-text-color);
   background-color: var(--secondary-bg-color);
 }
+.quality-menu {
+  display: flex;
+}
 
+.quality-menu > .item {
+  width: calc((100% - 30px * 3) / 4);
+}
+.quality-menu > .item:not(:last-child) {
+  margin-right: var(--margin-content);
+}
 .quality-menu-title {
+  margin-bottom: 10px;
+
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
   color: var(--secondary-text-color);
 }
 .title {
+  margin-bottom: 50px;
+
   font-weight: 700;
   font-size: 36px;
   line-height: 1.17;
@@ -110,7 +196,42 @@ body {
   letter-spacing: 0.03em;
   color: var(--secondary-text-color);
 }
+
+.work.section {
+  padding-top: 0;
+}
+.work-menu {
+  display: flex;
+}
+.work-menu > .item {
+  width: calc((100% - 30px * 2) / 3);
+}
+.work-menu > .item:not(:last-child) {
+  margin-right: var(--margin-content);
+}
+.team {
+  background-color: var(--secondary-bg-color);
+}
+.team-menu {
+  display: flex;
+}
+.team-menu > .item {
+  width: calc((100% - 30px * 3) / 4);
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+.team-menu > .item:not(:last-child) {
+  margin-right: var(--margin-content);
+}
+.teammate-name {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 .team-menu-title {
+  margin-bottom: 10px;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
@@ -126,8 +247,15 @@ body {
 /* footer */
 
 .footer {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
   /* Чтобы видеть белый цвет текста */
   background-color: var(--primary-bg-color);
+}
+.footer .logo {
+  display: block;
+  margin-bottom: 20px;
 }
 .footer-logo {
   font-family: 'Roboto', sans-serif;
@@ -138,22 +266,37 @@ body {
   color: var(--white-color);
 }
 .footer-address {
+  margin-bottom: 9px;
+
   font-style: normal;
   color: var(--white-color);
 }
-.footer .contacts-nav-link {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.7;
+.footer-contacts-nav > .item:not(:last-child) {
+  margin-bottom: 9px;
+}
+.footer-contacts-nav-link {
+  font-style: normal;
   color: var(--white-transparent-color);
 }
 
-.footer .contacts-nav-link:hover {
+.footer-contacts-nav-link:hover {
   color: var(--accent-color);
 }
 
 /* portfolio */
+.portfolio-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.portfolio-filter > .item:not(:last-child) {
+  margin-right: 8px;
+}
 .portfolio-filter .button {
+  border-style: none;
+  border-radius: 4px;
+  padding: 6px 22px;
+
   cursor: pointer;
   color: var(--secondary-text-color);
   background-color: var(--secondary-bg-color);
@@ -167,10 +310,35 @@ body {
 }
 .portfolio-filter .button:hover,
 .portfolio-filter .button:focus {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+
   color: var(--white-color);
   background-color: var(--accent-color);
 }
+.portfolio-work {
+  display: flex;
+  flex-wrap: wrap;
+}
+.portfolio-work > .item {
+  width: calc((100% - 30px * 2) / 3);
+}
+.portfolio-work > .item:not(:nth-child(3n)) {
+  margin-right: var(--margin-content);
+}
+.portfolio-work > .item:not(:nth-last-child(-n + 3)) {
+  margin-bottom: var(--margin-content);
+}
+.portfolio-content {
+  padding: 20px 24px;
+  border-right: 1px solid var(--secondary-border-color);
+  border-bottom: 1px solid var(--secondary-border-color);
+  border-left: 1px solid var(--secondary-border-color);
+}
+
 .portfolio-work-title {
+  margin-bottom: 4px;
+
   font-weight: 700;
   font-size: 18px;
   line-height: 2;
